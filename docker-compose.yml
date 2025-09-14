@@ -13,7 +13,7 @@ services:
     volumes:
       - odoo-web-data:/var/lib/odoo
       # Pastikan folder custom-addons ini ada di direktori yang sama dengan docker-compose.yml Anda di host
-       - ./custom-addons:/mnt/extra-addons
+      - ./custom-addons:/mnt/extra-addons
       # Modul API untuk REST API
       - ./api-modules:/mnt/api-modules
       # Mount folder config
