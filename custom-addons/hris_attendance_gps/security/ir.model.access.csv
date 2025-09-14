@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hris_attendance_gps_hris_attendance_gps,hris_attendance_gps.hris_attendance_gps,model_hris_attendance_gps_hris_attendance_gps,base.group_user,1,1,1,1

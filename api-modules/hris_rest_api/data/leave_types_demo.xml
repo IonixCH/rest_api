@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Leave Types -->
+        <record id="hr_leave_type_annual" model="hr.leave.type">
+            <field name="name">Annual Leave</field>
+        </record>
+        
+        <record id="hr_leave_type_sick" model="hr.leave.type">
+            <field name="name">Sick Leave</field>
+        </record>
+        
+        <record id="hr_leave_type_emergency" model="hr.leave.type">
+            <field name="name">Emergency Leave</field>
+        </record>
+        
+        <record id="hr_leave_type_personal" model="hr.leave.type">
+            <field name="name">Personal Leave</field>
+        </record>
+        
+        <record id="hr_leave_type_maternity" model="hr.leave.type">
+            <field name="name">Maternity Leave</field>
+        </record>
+        
+        <record id="hr_leave_type_paternity" model="hr.leave.type">
+            <field name="name">Paternity Leave</field>
+        </record>
+    </data>
+</odoo>

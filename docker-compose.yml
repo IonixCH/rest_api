@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on: # Ubah bagian ini
+      db:
+        condition: service_healthy
+    ports:
+      - "8070:8069" # Odoo dapat diakses melalui http://localhost:8070
+    volumes:
+      - odoo-web-data:/var/lib/odoo
+      # Pastikan folder custom-addons ini ada di direktori yang sama dengan docker-compose.yml Anda di host
+       - ./custom-addons:/mnt/extra-addons
+      # Modul API untuk REST API
+      - ./api-modules:/mnt/api-modules
+      # Mount folder config
+      - ./config:/etc/odoo
+    environment:
+      - HOST=db
+      - USER=odoo
+      - PASSWORD=odoo_password
+      - ODOO_ADDONS_PATH=/usr/lib/python3/dist-packages/odoo/addons,/mnt/extra-addons,/mnt/api-modules
+      # --- BARIS PENTING YANG DITAMBAHKAN/DIKOREKSI ---
+      # Memberitahu Odoo nama database yang akan diinisialisasi/dihubungkan.
+      # Ini harus sesuai dengan POSTGRES_DB di service 'db'.
+      - DB_NAME=postgres
+
+  db:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=odoo_password
+      - POSTGRES_USER=odoo
+    volumes:
+      - odoo-db-data:/var/lib/postgresql/data
+    healthcheck: # Tambahkan bagian ini
+      test: [ "CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB -h db" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  odoo-web-data:
+  odoo-db-data:

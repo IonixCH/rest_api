@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="forecasting_menu_root" name="Forecasting" parent="hr_timesheet.timesheet_menu_root" sequence="99">
+
+        <menuitem id="total_timesheet_forecast" action="action_total_timesheet_forecast_details" sequence="5"/>
+
+        <menuitem id="project_timesheet_forecast" action="action_project_timesheet_forecast_details" sequence="5"/>
+
+        <menuitem id="employee_timesheet_forecast" action="action_employee_timesheet_forecast_details" sequence="5"/>
+
+        <menuitem id="task_timesheet_forecast" action="action_task_timesheet_forecast_details" sequence="5"/>
+
+    </menuitem>
+</odoo>

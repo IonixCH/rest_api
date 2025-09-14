@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hris_rest_api_public,HRIS REST API Public,base.model_res_users,,1,0,0,0

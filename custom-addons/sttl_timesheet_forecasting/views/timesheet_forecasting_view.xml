@@ -1,0 +1,275 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+    <!-- total timesheet forecast views & actions -->
+    <record id="view_total_timesheet_forecast_tree" model="ir.ui.view">
+        <field name="name">total_timesheet_forecast.tree</field>
+        <field name="model">total_timesheet.forecast</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="forecasting_dates"/>
+                <field name="forecasted_hrs"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_total_timesheet_forecast_graph" model="ir.ui.view">
+        <field name="name">total_timesheet_forecast.graph</field>
+        <field name="model">total_timesheet.forecast</field>
+        <field name="arch" type="xml">
+            <graph string="Timesheet Forecasting" type="line" sample="1"
+                disable_linking="1">
+                <field name="forecasted_hrs" type="measure" />
+                <field name="forecasting_dates" />
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_total_timesheet_forecast_search" model="ir.ui.view">
+        <field name="name">total_timesheet_forecast.search</field>
+        <field name="model">total_timesheet.forecast</field>
+        <field name="arch" type="xml">
+            <search string="Timesheet Forecasting">
+                <field name="forecasting_dates" />
+                <field name="forecasted_hrs" />
+                <separator />
+                <group expand="1" string="Group By">
+                    <separator orientation="vertical" />
+                    <filter string="Forecasting Date" name="forecasting_dates"
+                        context="{'group_by':'forecasting_dates'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_total_timesheet_forecast_pivot" model="ir.ui.view" >
+        <field name="name">total_timesheet_forecast.pivot</field>
+        <field name="model">total_timesheet.forecast</field>
+        <field name="arch" type="xml">
+            <pivot string="Timesheet Forecasting">
+                <field name="forecasted_hrs" type="measure" />
+                <field name="forecasting_dates" />
+            </pivot>
+        </field>
+    </record>
+
+    <record id="action_total_timesheet_forecast_details" model="ir.actions.act_window">
+        <field name="name">Total Timesheet Forecast</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">total_timesheet.forecast</field>
+        <field name="view_mode">graph,search,pivot</field>
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a Timesheet Forecasting Report in your address book
+            </p>
+        </field>
+    </record>
+
+    <!-- total project timesheet forecast views & actions -->
+    <record id="view_project_timesheet_forecast_tree" model="ir.ui.view">
+        <field name="name">project_forecast.tree</field>
+        <field name="model">project_timesheet.forecast</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="forecasting_dates"/>
+                <field name="project_id"/>
+                <field name="forecasted_hrs"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_project_timesheet_forecast_graph" model="ir.ui.view">
+        <field name="name">project_timesheet_forecast.graph</field>
+        <field name="model">project_timesheet.forecast</field>
+        <field name="arch" type="xml">
+            <graph string="Project Timesheet Forecasting" type="line" sample="1"
+                disable_linking="1">
+                <field name="forecasted_hrs" type="measure" />
+                <field name="forecasting_dates"/>
+                <field name="project_id"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_project_timesheet_forecast_search" model="ir.ui.view">
+        <field name="name">project_timesheet_forecast.search</field>
+        <field name="model">project_timesheet.forecast</field>
+        <field name="arch" type="xml">
+            <search string="Project Timesheet Forecasting">
+                <field name="forecasting_dates" />
+                <field name="forecasted_hrs" />
+                <field name="project_id"/>
+                <separator />
+                <group expand="1" string="Group By">
+                    <separator orientation="vertical" />
+                    <filter string="Forecasting Date" name="forecasting_dates"
+                        context="{'group_by':'forecasting_dates'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_project_timesheet_forecast_pivot" model="ir.ui.view" >
+        <field name="name">project_timesheet_forecast.pivot</field>
+        <field name="model">project_timesheet.forecast</field>
+        <field name="arch" type="xml">
+            <pivot string="Project Timesheet Forecasting">
+                <field name="forecasted_hrs" type="measure" />
+                <field name="forecasting_dates" />
+                <field name="project_id"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="action_project_timesheet_forecast_details" model="ir.actions.act_window">
+        <field name="name">Project Timesheet Forecast</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">project_timesheet.forecast</field>
+        <field name="view_mode">graph,search,pivot</field>
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a Project Timesheet Forecasting Report in your address book
+            </p>
+        </field>
+    </record>
+
+    <!-- total employee timesheet forecast views & actions -->
+    <record id="view_employee_timesheet_forecast_tree" model="ir.ui.view">
+        <field name="name">employee_forecast.tree</field>
+        <field name="model">employee_timesheet.forecast</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="forecasting_dates"/>
+                <field name="employee_id"/>
+                <field name="forecasted_hrs"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_employee_timesheet_forecast_graph" model="ir.ui.view">
+        <field name="name">employee_timesheet_forecast.graph</field>
+        <field name="model">employee_timesheet.forecast</field>
+        <field name="arch" type="xml">
+            <graph string="Employee Timesheet Forecasting" type="line" sample="1"
+                disable_linking="1">
+                <field name="forecasted_hrs" type="measure" />
+                <field name="forecasting_dates"/>
+                <field name="employee_id"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_employee_timesheet_forecast_search" model="ir.ui.view">
+        <field name="name">employee_timesheet_forecast.search</field>
+        <field name="model">employee_timesheet.forecast</field>
+        <field name="arch" type="xml">
+            <search string="Employee Timesheet Forecasting">
+                <field name="forecasting_dates" />
+                <field name="forecasted_hrs" />
+                <field name="employee_id"/>
+                <separator />
+                <group expand="1" string="Group By">
+                    <separator orientation="vertical" />
+                    <filter string="Forecasting Date" name="forecasting_dates"
+                        context="{'group_by':'forecasting_dates'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_employee_timesheet_forecast_pivot" model="ir.ui.view" >
+        <field name="name">employee_timesheet_forecast.pivot</field>
+        <field name="model">employee_timesheet.forecast</field>
+        <field name="arch" type="xml">
+            <pivot string="Project Timesheet Forecasting">
+                <field name="forecasted_hrs" type="measure" />
+                <field name="forecasting_dates" />
+                <field name="employee_id"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="action_employee_timesheet_forecast_details" model="ir.actions.act_window">
+        <field name="name">Employee Timesheet Forecast</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">employee_timesheet.forecast</field>
+        <field name="view_mode">graph,search,pivot</field>
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a Employee Timesheet Forecasting Report in your address book
+            </p>
+        </field>
+    </record>
+
+    <!-- total task timesheet forecast views & actions -->
+    <record id="view_task_timesheet_forecast_tree" model="ir.ui.view">
+        <field name="name">task_forecast.tree</field>
+        <field name="model">task_timesheet.forecast</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="forecasting_dates"/>
+                <field name="task_id"/>
+                <field name="forecasted_hrs"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_task_timesheet_forecast_graph" model="ir.ui.view">
+        <field name="name">task_timesheet_forecast.graph</field>
+        <field name="model">task_timesheet.forecast</field>
+        <field name="arch" type="xml">
+            <graph string="Task Timesheet Forecasting" type="line" sample="1"
+                disable_linking="1">
+                <field name="forecasted_hrs" type="measure" />
+                <field name="forecasting_dates"/>
+                <field name="task_id"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_task_timesheet_forecast_search" model="ir.ui.view">
+        <field name="name">task_timesheet_forecast.search</field>
+        <field name="model">task_timesheet.forecast</field>
+        <field name="arch" type="xml">
+            <search string="Task Timesheet Forecasting">
+                <field name="forecasting_dates" />
+                <field name="forecasted_hrs" />
+                <field name="task_id"/>
+                <separator />
+                <group expand="1" string="Group By">
+                    <separator orientation="vertical" />
+                    <filter string="Forecasting Date" name="forecasting_dates"
+                        context="{'group_by':'forecasting_dates'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_task_timesheet_forecast_pivot" model="ir.ui.view" >
+        <field name="name">task_timesheet_forecast.pivot</field>
+        <field name="model">task_timesheet.forecast</field>
+        <field name="arch" type="xml">
+            <pivot string="Project Timesheet Forecasting">
+                <field name="forecasted_hrs" type="measure" />
+                <field name="forecasting_dates" />
+                <field name="task_id"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="action_task_timesheet_forecast_details" model="ir.actions.act_window">
+        <field name="name">Task Timesheet Forecast</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">task_timesheet.forecast</field>
+        <field name="view_mode">graph,search,pivot</field>
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a Task Timesheet Forecasting Report in your address book
+            </p>
+        </field>
+    </record>
+</odoo>
